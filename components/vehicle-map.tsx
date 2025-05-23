@@ -2,8 +2,7 @@
 
 import { useState, useEffect } from "react"
 import dynamic from "next/dynamic"
-import { ZoomIn, ZoomOut, Car, X } from "lucide-react"
-import { Button } from "@/components/ui/button"
+import { ZoomIn, ZoomOut, Car, X } from 'lucide-react'
 
 // Dynamically import the Map component to avoid SSR issues with Leaflet
 const Map = dynamic(() => import("@/components/map"), {
@@ -62,24 +61,28 @@ export default function VehicleMap() {
 
       {/* Zoom controls */}
       <div className="absolute bottom-24 right-4 flex flex-col gap-2 z-[1000]">
-        <Button variant="secondary" size="icon" onClick={handleZoomIn} className="rounded-full shadow-lg">
+        <button 
+          onClick={handleZoomIn}
+          className="inline-flex items-center justify-center whitespace-nowrap rounded-full text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 disabled:pointer-events-none disabled:opacity-50 bg-white hover:bg-gray-100 text-gray-900 shadow-lg h-10 w-10"
+        >
           <ZoomIn className="h-5 w-5" />
-        </Button>
-        <Button variant="secondary" size="icon" onClick={handleZoomOut} className="rounded-full shadow-lg">
+        </button>
+        <button 
+          onClick={handleZoomOut}
+          className="inline-flex items-center justify-center whitespace-nowrap rounded-full text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 disabled:pointer-events-none disabled:opacity-50 bg-white hover:bg-gray-100 text-gray-900 shadow-lg h-10 w-10"
+        >
           <ZoomOut className="h-5 w-5" />
-        </Button>
+        </button>
       </div>
 
       {/* Vehicle button */}
       <div className="absolute bottom-6 left-4 z-[1000]">
-        <Button
-          variant="secondary"
-          size="icon"
+        <button
           onClick={toggleVehicleDetails}
-          className="rounded-full shadow-lg h-12 w-12 bg-white hover:bg-gray-100"
+          className="inline-flex items-center justify-center whitespace-nowrap rounded-full text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 disabled:pointer-events-none disabled:opacity-50 bg-white hover:bg-gray-100 text-gray-900 shadow-lg h-12 w-12"
         >
           <Car className="h-6 w-6 text-blue-600" />
-        </Button>
+        </button>
       </div>
 
       {/* Vehicle details panel */}
@@ -87,9 +90,12 @@ export default function VehicleMap() {
         <div className="absolute bottom-20 left-4 bg-white rounded-lg shadow-lg p-4 z-[1000] w-64">
           <div className="flex justify-between items-center mb-2">
             <h3 className="text-lg font-bold">{vehicles[0].name}</h3>
-            <Button variant="ghost" size="icon" onClick={toggleVehicleDetails} className="h-6 w-6">
+            <button 
+              onClick={toggleVehicleDetails}
+              className="inline-flex items-center justify-center whitespace-nowrap rounded text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 disabled:pointer-events-none disabled:opacity-50 hover:bg-gray-100 h-6 w-6"
+            >
               <X className="h-4 w-4" />
-            </Button>
+            </button>
           </div>
           <div className="space-y-2">
             <div className="flex justify-between">
